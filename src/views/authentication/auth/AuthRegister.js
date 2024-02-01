@@ -22,11 +22,11 @@ const AuthRegister = ({ title, subtitle, subtext }) => (
                 <CustomTextField id="name" variant="outlined" fullWidth />
 
                 <Typography variant="subtitle1"
-                    fontWeight={600} component="label" htmlFor='email' mb="5px" mt="25px">Email Address</Typography>
-                <CustomTextField id="email" variant="outlined" fullWidth />
+                    fontWeight={600} component="label" htmlFor='password' mb="5px" mt="25px">Password</Typography>
+                <CustomTextField id="password" variant="outlined" fullWidth />
 
                 <Typography variant="subtitle1"
-                    fontWeight={600} component="label" htmlFor='password' mb="5px" mt="25px">Password</Typography>
+                    fontWeight={600} component="label" htmlFor='password' mb="5px" mt="25px">Confirm password</Typography>
                 <CustomTextField id="password" variant="outlined" fullWidth />
             </Stack>
             <Button color="primary" variant="contained" size="large" fullWidth component={Link} to="/auth/login">

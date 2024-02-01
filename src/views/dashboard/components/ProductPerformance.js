@@ -53,7 +53,7 @@ const products = [
 const ProductPerformance = () => {
     return (
 
-        <DashboardCard title="Product Performance">
+        <DashboardCard title="Liste culture">
             <Box sx={{ overflow: 'auto', width: { xs: '280px', sm: 'auto' } }}>
                 <Table
                     aria-label="simple table"
@@ -66,27 +66,22 @@ const ProductPerformance = () => {
                         <TableRow>
                             <TableCell>
                                 <Typography variant="subtitle2" fontWeight={600}>
-                                    Id
+                                    IdParcelle
                                 </Typography>
                             </TableCell>
                             <TableCell>
                                 <Typography variant="subtitle2" fontWeight={600}>
-                                    Assigned
+                                    Culture
                                 </Typography>
                             </TableCell>
                             <TableCell>
                                 <Typography variant="subtitle2" fontWeight={600}>
-                                    Name
+                                    Proprietaire
                                 </Typography>
                             </TableCell>
                             <TableCell>
                                 <Typography variant="subtitle2" fontWeight={600}>
-                                    Priority
-                                </Typography>
-                            </TableCell>
-                            <TableCell align="right">
-                                <Typography variant="subtitle2" fontWeight={600}>
-                                    Budget
+                                    Message
                                 </Typography>
                             </TableCell>
                         </TableRow>
@@ -141,9 +136,6 @@ const ProductPerformance = () => {
                                         size="small"
                                         label={product.priority}
                                     ></Chip>
-                                </TableCell>
-                                <TableCell align="right">
-                                    <Typography variant="h6">${product.budget}k</Typography>
                                 </TableCell>
                             </TableRow>
                         ))}
