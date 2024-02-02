@@ -1,5 +1,5 @@
 import {
-  IconAperture, IconCopy, IconLayoutDashboard, IconLogin
+  IconLayoutDashboard, IconLogin, IconMessage
 } from '@tabler/icons';
 
 import { uniqueId } from 'lodash';
@@ -24,8 +24,8 @@ const Menuitems = [
   {
     id: uniqueId(),
     title: 'View message',
-    icon: IconLayoutDashboard,
-    href: '',
+    icon: IconMessage,
+    href: '/message',
   },
   {
     navlabel: true,
