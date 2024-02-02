@@ -34,12 +34,6 @@ const AuthLogin = ({ title, subtitle, subtext }) => (
                 <CustomTextField id="password" type="password" variant="outlined" fullWidth />
             </Box>
             <Stack justifyContent="space-between" direction="row" alignItems="center" my={2}>
-                <FormGroup>
-                    <FormControlLabel
-                        control={<Checkbox defaultChecked />}
-                        label="Remeber this Device"
-                    />
-                </FormGroup>
             </Stack>
         </Stack>
         <Box>

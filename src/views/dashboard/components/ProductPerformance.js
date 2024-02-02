@@ -66,7 +66,7 @@ const ProductPerformance = () => {
                         <TableRow>
                             <TableCell>
                                 <Typography variant="subtitle2" fontWeight={600}>
-                                    IdParcelle
+                                    Nom parcelle
                                 </Typography>
                             </TableCell>
                             <TableCell>
@@ -96,7 +96,7 @@ const ProductPerformance = () => {
                                             fontWeight: "500",
                                         }}
                                     >
-                                        {product.id}
+                                        {product.pname}
                                     </Typography>
                                 </TableCell>
                                 <TableCell>

@@ -18,6 +18,17 @@ const Menuitems = [
   },
   {
     navlabel: true,
+    subheader: 'Message',
+  },
+
+  {
+    id: uniqueId(),
+    title: 'View message',
+    icon: IconLayoutDashboard,
+    href: '',
+  },
+  {
+    navlabel: true,
     subheader: 'Auth',
   },
   {
