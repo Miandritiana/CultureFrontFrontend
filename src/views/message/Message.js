@@ -1,34 +1,48 @@
-import React from 'react';
-import { Grid, Box } from '@mui/material';
+import React, { useState } from 'react';
+import { Grid, Box, Paper, Typography } from '@mui/material';
 import PageContainer from 'src/components/container/PageContainer';
 import DashboardCard from '../../components/shared/DashboardCard';
-import { Paper } from '@mui/material';
-import { styled } from '@mui/material/styles';
 
-// components
-// import RecentTransactions from './components/RecentTransactions';
-// import ProductPerformance from './components/ProductPerformance';
-
-const Item = styled(Paper)(({ theme }) => ({
-    ...theme.typography.body1,
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
-    height: 60,
-    lineHeight: '60px',
-  }));
+//component
+import Chat from '../message/components/Chat';
 
 const Message = () => {
+
+    const [selectedUser, setSelectedUser] = useState(null);
+
+    const handleUserClick = (userName) => {
+        setSelectedUser(userName);
+    };
+
+    const users = ["Rakoto", "John", "Alice"];
+
   return (
     <PageContainer title="Message" description="this is Message">
         <DashboardCard title="Votre message" >
             <Box>
                 <Grid container spacing={4}>
                     <Grid item xs={12} lg={4}>
-                        <Item key={4} elevation={4}>{`Rakoto`}</Item>
-                        {/* <ProductPerformance /> */}
+                        {users.map((user, index) => (
+                            <Paper
+                                key={index}
+                                elevation={selectedUser === user ? 8 : 4}
+                                onClick={() => handleUserClick(user)}
+                                style={{
+                                    height: 60,
+                                    lineHeight: '60px',
+                                    cursor: 'pointer',
+                                    backgroundColor: selectedUser === user ? '#e0e0e0' : 'white',
+                                }}
+                            >
+                               <Typography variant="h4">{user}</Typography>
+                            </Paper>
+                        ))} 
                     </Grid>
                     <Grid item xs={12} lg={8}>
-                        {/* <RecentTransactions /> */}
+                        {selectedUser && (
+                            <Chat />
+                            // Add your discussion component or content here
+                        )}
                     </Grid>
                 </Grid>
             </Box>
