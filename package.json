@@ -68,5 +68,12 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "scripts": {
+    "sass": "node-sass Chat.scss -o src/views/message/components"
+  },
+  "scripts": {
+    "start": "react-scripts start"
   }
+  
 }
