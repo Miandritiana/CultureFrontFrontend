@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import './Chat.css';
 
 const Chat = () => {
@@ -6,21 +6,6 @@ const Chat = () => {
     const messageInputRef = useRef(null);
 
     let d, m;
-    let i = 0;
-
-    useEffect(() => {
-        // Initialize messages or load from the backend
-        fakeMessage();
-
-        // Focus on the message input when the component mounts
-        messageInputRef.current.focus();
-    }, []);
-
-    const updateScrollbar = () => {
-        // If you want to scroll to the bottom of the messages, you can use the ref
-        // For example, if you set a ref for the messages container:
-        // messagesContainerRef.current.scrollTop = messagesContainerRef.current.scrollHeight;
-    };
 
     const setDate = () => {
         d = new Date();
@@ -46,12 +31,6 @@ const Chat = () => {
 
         // Clear the input field
         messageInputRef.current.value = '';
-
-        updateScrollbar();
-
-        setTimeout(() => {
-            fakeMessage();
-        }, 1000 + Math.random() * 20 * 100);
     };
 
     const handleKeyDown = (e) => {
@@ -60,39 +39,8 @@ const Chat = () => {
         }
     };
 
-    const Fake = [
-        'Hi there, I\'m Fabio and you?',
-        'Nice to meet you',
-        'How are you?',
-        // ... other messages
-    ];
-
-    const fakeMessage = () => {
-        if (messageInputRef.current.value.trim() !== '') {
-            return;
-        }
-
-        setMessages(prevMessages => [
-            ...prevMessages,
-            { type: 'loading' }
-        ]);
-
-        updateScrollbar();
-
-        setTimeout(() => {
-            setMessages(prevMessages => [
-                ...prevMessages.slice(0, -1),
-                { type: 'new', text: Fake[i] }
-            ]);
-            setDate();
-            updateScrollbar();
-            i++;
-        }, 1000 + Math.random() * 20 * 100);
-    };
-
     return (
         <div className="chat">
-            {/* ... other components */}
             <div className="messages">
                 <div className="messages-content">
                     {/* Render messages */}
