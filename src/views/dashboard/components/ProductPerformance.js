@@ -1,56 +1,39 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import {
     Typography, Box,
     Table,
     TableBody,
     TableCell,
     TableHead,
-    TableRow,
-    Chip
+    TableRow
 } from '@mui/material';
 import DashboardCard from '../../../components/shared/DashboardCard';
+import { IconSend } from '@tabler/icons';
 
-const products = [
-    {
-        id: "1",
-        name: "Sunil Joshi",
-        post: "Web Designer",
-        pname: "Elite Admin",
-        priority: "Low",
-        pbg: "primary.main",
-        budget: "3.9",
-    },
-    {
-        id: "2",
-        name: "Andrew McDownland",
-        post: "Project Manager",
-        pname: "Real Homes WP Theme",
-        priority: "Medium",
-        pbg: "secondary.main",
-        budget: "24.5",
-    },
-    {
-        id: "3",
-        name: "Christopher Jamil",
-        post: "Project Manager",
-        pname: "MedicalPro WP Theme",
-        priority: "High",
-        pbg: "error.main",
-        budget: "12.8",
-    },
-    {
-        id: "4",
-        name: "Nirav Joshi",
-        post: "Frontend Engineer",
-        pname: "Hosting Press HTML",
-        priority: "Critical",
-        pbg: "success.main",
-        budget: "2.4",
-    },
-];
+const ProductPerformance = ({products}) => {
 
+    const handleSendMessage = (userId) => {
+        const senderId = localStorage.getItem('userId');
+        if (!senderId) {
+          window.location.href = "auth/login";
+          return;
+        }
+    
+        // Get the userId of the product from its data
+        const receiverId = userId;
+    
+        // Send message
+        fetch(`https://culturebackoffice-production.up.railway.app/discussions/idutilisateur?userSend=${senderId}&userReceive=${receiverId}`)
+          .then(response => response.json())
+          .then(data => {
+            // Redirect to the Message view after sending the message
+            window.location.href = "/message";
+          })
+          .catch(error => {
+            console.error('Error sending message:', error);
+          });
+      };
 
-const ProductPerformance = () => {
     return (
 
         <DashboardCard title="Liste culture">
@@ -96,7 +79,7 @@ const ProductPerformance = () => {
                                             fontWeight: "500",
                                         }}
                                     >
-                                        {product.pname}
+                                        {product.nomParcelle}
                                     </Typography>
                                 </TableCell>
                                 <TableCell>
@@ -107,35 +90,24 @@ const ProductPerformance = () => {
                                         }}
                                     >
                                         <Box>
-                                            <Typography variant="subtitle2" fontWeight={600}>
-                                                {product.name}
-                                            </Typography>
                                             <Typography
                                                 color="textSecondary"
                                                 sx={{
                                                     fontSize: "13px",
                                                 }}
                                             >
-                                                {product.post}
+                                                {product.nomCulture}
                                             </Typography>
                                         </Box>
                                     </Box>
                                 </TableCell>
                                 <TableCell>
                                     <Typography color="textSecondary" variant="subtitle2" fontWeight={400}>
-                                        {product.pname}
+                                        {product.nomUser}
                                     </Typography>
                                 </TableCell>
                                 <TableCell>
-                                    <Chip
-                                        sx={{
-                                            px: "4px",
-                                            backgroundColor: product.pbg,
-                                            color: "#fff",
-                                        }}
-                                        size="small"
-                                        label={product.priority}
-                                    ></Chip>
+                                    <IconSend onClick={() => handleSendMessage(product.userId)} />
                                 </TableCell>
                             </TableRow>
                         ))}

@@ -34,14 +34,13 @@ const Message = () => {
                                     backgroundColor: selectedUser === user ? '#e0e0e0' : 'white',
                                 }}
                             >
-                               <Typography variant="h4">{user}</Typography>
+                               <Typography variant="h6">{user}</Typography>
                             </Paper>
                         ))} 
                     </Grid>
                     <Grid item xs={12} lg={8}>
                         {selectedUser && (
                             <Chat />
-                            // Add your discussion component or content here
                         )}
                     </Grid>
                 </Grid>

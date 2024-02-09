@@ -24,6 +24,12 @@ const Profile = () => {
     setAnchorEl2(null);
   };
 
+  const handleLogout = () => {
+    localStorage.removeItem('userId');
+
+    window.location.href = "/auth/login";
+}
+
   return (
     <Box>
       <IconButton
@@ -72,7 +78,7 @@ const Profile = () => {
           <ListItemText>My Account</ListItemText>
         </MenuItem>
         <Box mt={1} py={1} px={2}>
-          <Button to="/auth/login" variant="outlined" color="primary" component={Link} fullWidth>
+          <Button onClick={handleLogout} variant="outlined" color="primary" fullWidth>
             Logout
           </Button>
         </Box>
